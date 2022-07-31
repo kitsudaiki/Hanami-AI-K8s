@@ -1,0 +1,124 @@
+apiVersion: v1
+data:
+  policies: |+
+    [misaka]
+    v1/auth
+    - GET: tester
+
+    v1/user
+    - GET: tester
+    - POST: tester
+    - DELETE: tester
+
+    v1/user/all
+    - GET: tester
+
+    v1/documentation/api/rest
+    - GET: tester
+
+    [sagiri]
+    v1/foreward
+    - GET: tester
+
+    v1/mnist/data_set
+    - POST: tester
+    - PUT: tester
+
+    v1/csv/data_set
+    - POST: tester
+    - PUT: tester
+
+    v1/data_set/check
+    - POST: tester
+
+    v1/data_set/progress
+    - GET: tester
+
+    v1/data_set
+    - POST: tester
+    - PUT: tester
+    - GET: tester
+    - DELETE: tester
+
+    v1/data_set/all
+    - GET: tester
+
+    v1/cluster_snapshot
+    - POST: tester
+    - PUT: tester
+    - GET: tester
+    - DELETE: tester
+
+    v1/cluster_snapshot/all
+    - GET: tester
+
+
+    [azuki]
+    v1/system_info
+    - GET: tester
+
+    v1/threading
+    - GET: tester
+
+
+    [kyouko]
+    v1/foreward
+    - GET: tester
+
+    v1/cluster
+    - POST: tester
+    - GET : tester
+    - DELETE: tester
+
+    v1/cluster/save
+    - POST: tester
+
+    v1/cluster/load
+    - POST: tester
+
+    v1/cluster/set_mode
+    - PUT: tester
+
+    v1/cluster/all
+    - GET : tester
+
+    v1/template/upload
+    - POST: tester
+
+    v1/template/generate
+    - POST: tester
+
+    v1/template
+    - GET : tester
+    - DELETE: tester
+
+    v1/template/all
+    - GET : tester
+
+    v1/task/learn
+    - POST: tester
+
+    v1/task/request
+    - POST: tester
+
+    v1/task/image/learn
+    - POST: tester
+
+    v1/task/image/request
+    - POST: tester
+
+    v1/task/graph/learn
+    - POST: tester
+
+    v1/task/graph/request
+    - POST: tester
+
+    v1/task
+    - GET : tester
+    - DELETE: tester
+
+    v1/task/all
+    - GET : tester
+
+
+kind: ConfigMap

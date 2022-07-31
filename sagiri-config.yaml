@@ -1,0 +1,22 @@
+apiVersion: v1
+data:
+  sagiri.conf: |+
+    [DEFAULT]
+    #debug = True
+    log_path = "/var/log/sagiri"
+    sakura-file-locaion = "/etc/sagiri/sakura-files"
+    address = "/tmp/hanami/sagiri.uds"
+    endpoints = "/etc/sagiri/endpoints"
+    database = "/etc/sagiri/sagiri_db"
+
+    [sagiri]
+    data_set_location = "/etc/sagiri/train_data"
+    result_location = "/etc/sagiri/results"
+    error_location = "/etc/sagiri/errors"
+    audit_location = "/etc/sagiri/audit"
+    cluster_snapshot_location = "/etc/sagiri/cluster_snapshots"
+
+    [misaka]
+    address = "/tmp/hanami/misaka.uds"
+
+kind: ConfigMap
