@@ -1,4 +1,6 @@
 apiVersion: v1
+metadata:
+  name: misaki-config
 data:
   misaki.conf: |
     [DEFAULT]
@@ -10,14 +12,14 @@ data:
     database = "/etc/misaki/misaki_db"
 
     [misaki]
-    token_key = "asdf"
+    token_key_path = "/etc/misaki/token_key"
     policies = "/etc/misaki/policies"
 
     #[azuki]
     #address = "/tmp/azuki.uds"
 
-    [sagiri]
-    address = "/tmp/hanami/sagiri.uds"
+    [shiori]
+    address = "/tmp/hanami/shiori.uds"
 
     [kyouko]
     address = "/tmp/hanami/kyouko.uds"

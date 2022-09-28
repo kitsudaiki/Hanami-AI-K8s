@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hanami-project
+  name: hanami-ai
   labels:
     app: hanami
 spec:
@@ -16,71 +16,74 @@ spec:
     spec:
       initContainers:
       - name: dashboard-container
-        image: registry.kitsunemimi.moe:5000/hanami_dashboard:master
+        image: registry.kitsunemimi.moe:5000/hanami_ai_dashboard:0.1.0
         imagePullPolicy: Always
         securityContext:
           runAsUser: 0
-        command: ["cp", "-r", "/etc/HanamiDashboard", "/etc/torii/"]
+        command: ["cp", "-r", "/etc/HanamiAI-Dashboard", "/etc/torii/"]
         volumeMounts:
         - name: dashboard-volume
-          mountPath: /etc/torii/HanamiDashboard
+          mountPath: /etc/torii/HanamiAI-Dashboard
       containers:
       - name: misaki
-        image: registry.kitsunemimi.moe:5000/misaki_guard:master
+        image: registry.kitsunemimi.moe:5000/misaki_guard:0.1.0
         imagePullPolicy: Always
         env:
-        - name: HANAMI_ADMIN_USER
-          value: "test_user"
+        - name: HANAMI_ADMIN_USER_ID
+          value: {{ .Values.user_id }}
+        - name: HANAMI_ADMIN_USER_NAME
+          value: {{ .Values.user_name }}
         - name: HANAMI_ADMIN_PASSWORD
-          value: "poipoi"
-        - name: HANAMI_ADMIN_ROLE
-          value: "tester"
+          value: {{ .Values.user_pw }}
         volumeMounts:
-        - name: misaki-config-volume
+        - name: misaki-config
           mountPath: /etc/misaki/misaki.conf
           subPath: misaki.conf
-        - name: endpoints-config-volume
+        - name: endpoints-config
           mountPath: /etc/misaki/endpoints
           subPath: endpoints
-        - name: policies-config-volume
+        - name: policies-config
           mountPath: /etc/misaki/policies
           subPath: policies
+        - name: token-key
+          mountPath: /etc/misaki/token_key
+          subPath: token_key
         - name: sakura-files-volume
           mountPath: /etc/misaki/sakura-files
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
-      - name: sagiri
-        image: registry.kitsunemimi.moe:5000/sagiri_archive:master
+      - name: shiori
+        image: registry.kitsunemimi.moe:5000/shiori_archive:0.1.0
         imagePullPolicy: Always
         volumeMounts:
-        - name: sagiri-config-volume
-          mountPath: /etc/sagiri/sagiri.conf
-          subPath: sagiri.conf
-        - name: endpoints-config-volume
-          mountPath: /etc/sagiri/endpoints
+        - name: shiori-config
+          mountPath: /etc/shiori/shiori.conf
+          subPath: shiori.conf
+        - name: endpoints-config
+          mountPath: /etc/shiori/endpoints
           subPath: endpoints
         - name: sakura-files-volume
-          mountPath: /etc/sagiri/sakura-files
+          mountPath: /etc/shiori/sakura-files
         - name: errors-volume
-          mountPath: /etc/sagiri/errors
+          mountPath: /etc/shiori/errors
         - name: audit-volume
-          mountPath: /etc/sagiri/audit
+          mountPath: /etc/shiori/audit
         - name: cluster-snapshots-volume
-          mountPath: /etc/sagiri/cluster_snapshots
+          mountPath: /etc/shiori/cluster_snapshots
         - name: train-data-volume
-          mountPath: /etc/sagiri/train_data
+          mountPath: /etc/shiori/train_data
         - name: results-volume
-          mountPath: /etc/sagiri/results
+          mountPath: /etc/shiori/results
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
       - name: kyouko
-        image: registry.kitsunemimi.moe:5000/kyouko_mind:master
+        image: registry.kitsunemimi.moe:5000/kyouko_mind:0.1.0
         imagePullPolicy: Always
         volumeMounts:
-        - name: kyouko-config-volume
+        - name: kyouko-config
           mountPath: /etc/kyouko/kyouko.conf
           subPath: kyouko.conf
-        - name: endpoints-config-volume
+        - name: endpoints-config
           mountPath: /etc/kyouko/endpoints
           subPath: endpoints
         - name: sakura-files-volume
@@ -88,15 +91,15 @@ spec:
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
       - name: azuki
-        image: registry.kitsunemimi.moe:5000/azuki_heart:measuere-energy-consumption
+        image: registry.kitsunemimi.moe:5000/azuki_heart:0.1.0
         imagePullPolicy: Always
         securityContext:
           privileged: true
         volumeMounts:
-        - name: azuki-config-volume
+        - name: azuki-config
           mountPath: /etc/azuki/azuki.conf
           subPath: azuki.conf
-        - name: endpoints-config-volume
+        - name: endpoints-config
           mountPath: /etc/azuki/endpoints
           subPath: endpoints
         - name: sakura-files-volume
@@ -104,19 +107,13 @@ spec:
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
       - name: torii
-        image: registry.kitsunemimi.moe:5000/torii_gateway:master
+        image: registry.kitsunemimi.moe:5000/torii_gateway:0.1.0
         imagePullPolicy: Always
         volumeMounts:
-        - name: torii-config-volume
+        - name: torii-config
           mountPath: /etc/torii/torii.conf
           subPath: torii.conf
-        - name: torii-key-config-volume
-          mountPath: /etc/torii/key.pem
-          subPath: key.pem
-        - name: torii-cert-config-volume
-          mountPath: /etc/torii/cert.pem
-          subPath: cert.pem
-        - name: endpoints-config-volume
+        - name: endpoints-config
           mountPath: /etc/torii/endpoints
           subPath: endpoints
         - name: sakura-files-volume
@@ -124,37 +121,35 @@ spec:
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
         - name: dashboard-volume
-          mountPath: /etc/torii/HanamiDashboard
+          mountPath: /etc/torii/HanamiAI-Dashboard
         ports:
         - containerPort: 1337
+          name: torii-port
       volumes:
-        - name: misaki-config-volume
+        - name: misaki-config
           configMap:
             name: misaki-config
-        - name: sagiri-config-volume
+        - name: shiori-config
           configMap:
-            name: sagiri-config
-        - name: kyouko-config-volume
+            name: shiori-config
+        - name: kyouko-config
           configMap:
             name: kyouko-config
-        - name: azuki-config-volume
+        - name: azuki-config
           configMap:
             name: azuki-config
-        - name: torii-config-volume
+        - name: torii-config
           configMap:
             name: torii-config
-        - name: endpoints-config-volume
+        - name: endpoints-config
           configMap:
             name: endpoints-config
-        - name: policies-config-volume
+        - name: policies-config
           configMap:
             name: policies-config
-        - name: torii-cert-config-volume
+        - name: token-key
           configMap:
-            name: torii-cert-config
-        - name: torii-key-config-volume
-          configMap:
-            name: torii-key-config
+            name: token-key
         - name: sakura-files-volume
           emptyDir: {}
         - name: errors-volume

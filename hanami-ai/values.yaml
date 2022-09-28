@@ -1,0 +1,17 @@
+# Default values for hanami-project.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+user_id: "test_user"
+user_name: "Test User"
+user_pw: "asdfasdf"
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

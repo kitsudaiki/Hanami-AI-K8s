@@ -1,0 +1,158 @@
+apiVersion: v1
+metadata:
+  name: policies-config
+data:
+  policies: |+
+    [misaki]
+    v1/auth
+    - GET: admin
+
+    v1/token
+    - PUT: admin
+
+    v1/user
+    - GET: admin
+    - POST: admin
+    - DELETE: admin
+
+    v1/user/project
+    - POST: admin
+    - DELETE: admin
+
+    v1/user/all
+    - GET: admin
+
+    v1/project
+    - GET: admin
+    - POST: admin
+    - DELETE: admin
+
+    v1/project/all
+    - GET: admin
+
+    v1/project/user
+    - GET: admin
+
+    v1/documentation/api/rest
+    - GET: admin
+
+    [shiori]
+    v1/foreward
+    - GET: admin
+
+    v1/mnist/data_set
+    - POST: admin
+    - PUT: admin
+
+    v1/csv/data_set
+    - POST: admin
+    - PUT: admin
+
+    v1/data_set/check
+    - POST: admin
+
+    v1/data_set/progress
+    - GET: admin
+
+    v1/data_set
+    - POST: admin
+    - PUT: admin
+    - GET: admin
+    - DELETE: admin
+
+    v1/data_set/all
+    - GET: admin
+
+    v1/cluster_snapshot
+    - POST: admin
+    - PUT: admin
+    - GET: admin
+    - DELETE: admin
+
+    v1/cluster_snapshot/all
+    - GET: admin
+
+
+    v1/request_result
+    - GET: admin
+    - DELETE: admin
+
+    v1/request_result/all
+    - GET: admin
+
+
+    [azuki]
+    v1/system_info
+    - GET: admin
+
+    v1/threading
+    - GET: admin
+
+    v1/power_consumption
+    - GET: admin
+
+    v1/temperature_production
+    - GET: admin
+
+
+    [kyouko]
+    v1/foreward
+    - GET: admin
+
+    v1/cluster
+    - POST: admin
+    - GET : admin
+    - DELETE: admin
+
+    v1/cluster/save
+    - POST: admin
+
+    v1/cluster/load
+    - POST: admin
+
+    v1/cluster/set_mode
+    - PUT: admin
+
+    v1/cluster/all
+    - GET : admin
+
+    v1/template/upload
+    - POST: admin
+
+    v1/template/generate
+    - POST: admin
+
+    v1/template
+    - GET : admin
+    - DELETE: admin
+
+    v1/template/all
+    - GET : admin
+
+    v1/task/learn
+    - POST: admin
+
+    v1/task/request
+    - POST: admin
+
+    v1/task/image/learn
+    - POST: admin
+
+    v1/task/image/request
+    - POST: admin
+
+    v1/task/graph/learn
+    - POST: admin
+
+    v1/task/graph/request
+    - POST: admin
+
+    v1/task
+    - GET : admin
+    - DELETE: admin
+
+    v1/task/all
+    - GET : admin
+
+
+kind: ConfigMap
