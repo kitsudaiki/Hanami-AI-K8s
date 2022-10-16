@@ -21,7 +21,7 @@ data:
     ip = "0.0.0.0"
     certificate = "/etc/torii/cert.pem"
     key = "/etc/torii/key.pem"
-    dashboard_files = "/etc/torii/HanamiAI-Dashboard/src"
+    dashboard_files = "/etc/torii/Hanami-AI-Dashboard/src"
     port = 1337
     enable_dashboard = True
 

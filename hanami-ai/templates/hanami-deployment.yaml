@@ -20,10 +20,10 @@ spec:
         imagePullPolicy: Always
         securityContext:
           runAsUser: 0
-        command: ["cp", "-r", "/etc/HanamiAI-Dashboard", "/etc/torii/"]
+        command: ["cp", "-r", "/etc/Hanami-AI-Dashboard", "/etc/torii/"]
         volumeMounts:
         - name: dashboard-volume
-          mountPath: /etc/torii/HanamiAI-Dashboard
+          mountPath: /etc/torii/Hanami-AI-Dashboard
       containers:
       - name: misaki
         image: kitsudaiki/misaki_guard:{{ .Values.docker_tag }}
@@ -121,7 +121,7 @@ spec:
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
         - name: dashboard-volume
-          mountPath: /etc/torii/HanamiAI-Dashboard
+          mountPath: /etc/torii/Hanami-AI-Dashboard
         ports:
         - containerPort: 1337
           name: torii-port
