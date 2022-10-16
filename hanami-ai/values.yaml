@@ -8,6 +8,9 @@ user_id: "test_user"
 user_name: "Test User"
 user_pw: "asdfasdf"
 
+docker_tag: "develop"
+
+
 resources: {}
 
 nodeSelector: {}

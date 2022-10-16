@@ -16,7 +16,7 @@ spec:
     spec:
       initContainers:
       - name: dashboard-container
-        image: registry.kitsunemimi.moe:5000/hanami_ai_dashboard:0.1.0
+        image: kitsudaiki/hanami_ai_dashboard:{{ .Values.docker_tag }}
         imagePullPolicy: Always
         securityContext:
           runAsUser: 0
@@ -26,7 +26,7 @@ spec:
           mountPath: /etc/torii/HanamiAI-Dashboard
       containers:
       - name: misaki
-        image: registry.kitsunemimi.moe:5000/misaki_guard:0.1.0
+        image: kitsudaiki/misaki_guard:{{ .Values.docker_tag }}
         imagePullPolicy: Always
         env:
         - name: HANAMI_ADMIN_USER_ID
@@ -53,7 +53,7 @@ spec:
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
       - name: shiori
-        image: registry.kitsunemimi.moe:5000/shiori_archive:0.1.0
+        image: kitsudaiki/shiori_archive:{{ .Values.docker_tag }}
         imagePullPolicy: Always
         volumeMounts:
         - name: shiori-config
@@ -77,7 +77,7 @@ spec:
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
       - name: kyouko
-        image: registry.kitsunemimi.moe:5000/kyouko_mind:0.1.0
+        image: kitsudaiki/kyouko_mind:{{ .Values.docker_tag }}
         imagePullPolicy: Always
         volumeMounts:
         - name: kyouko-config
@@ -91,7 +91,7 @@ spec:
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
       - name: azuki
-        image: registry.kitsunemimi.moe:5000/azuki_heart:0.1.0
+        image: kitsudaiki/azuki_heart:{{ .Values.docker_tag }}
         imagePullPolicy: Always
         securityContext:
           privileged: true
@@ -107,7 +107,7 @@ spec:
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
       - name: torii
-        image: registry.kitsunemimi.moe:5000/torii_gateway:0.1.0
+        image: kitsudaiki/torii_gateway:{{ .Values.docker_tag }}
         imagePullPolicy: Always
         volumeMounts:
         - name: torii-config
