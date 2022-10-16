@@ -5,10 +5,10 @@ data:
   policies: |+
     [misaki]
     v1/auth
-    - GET: admin
+    - GET: admin, member
 
     v1/token
-    - PUT: admin
+    - PUT: admin, member
 
     v1/user
     - GET: admin
@@ -16,8 +16,9 @@ data:
     - DELETE: admin
 
     v1/user/project
-    - POST: admin
-    - DELETE: admin
+    - POST: admin, member
+    - GET: admin, member
+    - DELETE: admin, member
 
     v1/user/all
     - GET: admin
@@ -30,129 +31,129 @@ data:
     v1/project/all
     - GET: admin
 
-    v1/project/user
-    - GET: admin
-
     v1/documentation/api/rest
-    - GET: admin
+    - GET: admin, member
 
     [shiori]
     v1/foreward
-    - GET: admin
+    - GET: admin, member
 
     v1/mnist/data_set
-    - POST: admin
-    - PUT: admin
+    - POST: admin, member
+    - PUT: admin, member
 
     v1/csv/data_set
-    - POST: admin
-    - PUT: admin
+    - POST: admin, member
+    - PUT: admin, member
 
     v1/data_set/check
-    - POST: admin
+    - POST: admin, member
 
     v1/data_set/progress
-    - GET: admin
+    - GET: admin, member
 
     v1/data_set
-    - POST: admin
-    - PUT: admin
-    - GET: admin
-    - DELETE: admin
+    - POST: admin, member
+    - PUT: admin, member
+    - GET: admin, member
+    - DELETE: admin, member
 
     v1/data_set/all
-    - GET: admin
+    - GET: admin, member
 
     v1/cluster_snapshot
-    - POST: admin
-    - PUT: admin
-    - GET: admin
-    - DELETE: admin
+    - POST: admin, member
+    - PUT: admin, member
+    - GET: admin, member
+    - DELETE: admin, member
 
     v1/cluster_snapshot/all
-    - GET: admin
+    - GET: admin, member
 
 
     v1/request_result
-    - GET: admin
-    - DELETE: admin
+    - GET: admin, member
+    - DELETE: admin, member
 
     v1/request_result/all
-    - GET: admin
+    - GET: admin, member
 
 
     [azuki]
     v1/system_info
-    - GET: admin
+    - GET: admin, member
 
     v1/threading
-    - GET: admin
+    - GET: admin, member
 
     v1/power_consumption
-    - GET: admin
+    - GET: admin, member
 
     v1/temperature_production
-    - GET: admin
+    - GET: admin, member
+
+    v1/speed
+    - GET: admin, member
 
 
     [kyouko]
     v1/foreward
-    - GET: admin
+    - GET: admin, member
 
     v1/cluster
-    - POST: admin
-    - GET : admin
-    - DELETE: admin
+    - POST: admin, member
+    - GET : admin, member
+    - DELETE: admin, member
 
     v1/cluster/save
-    - POST: admin
+    - POST: admin, member
 
     v1/cluster/load
-    - POST: admin
+    - POST: admin, member
 
     v1/cluster/set_mode
-    - PUT: admin
+    - PUT: admin, member
 
     v1/cluster/all
-    - GET : admin
+    - GET : admin, member
 
     v1/template/upload
-    - POST: admin
+    - POST: admin, member
 
     v1/template/generate
-    - POST: admin
+    - POST: admin, member
 
     v1/template
-    - GET : admin
-    - DELETE: admin
+    - GET : admin, member
+    - DELETE: admin, member
 
     v1/template/all
-    - GET : admin
+    - GET : admin, member
 
     v1/task/learn
-    - POST: admin
+    - POST: admin, member
 
     v1/task/request
-    - POST: admin
+    - POST: admin, member
 
     v1/task/image/learn
-    - POST: admin
+    - POST: admin, member
 
     v1/task/image/request
-    - POST: admin
+    - POST: admin, member
 
-    v1/task/graph/learn
-    - POST: admin
+    v1/task/table/learn
+    - POST: admin, member
 
-    v1/task/graph/request
-    - POST: admin
+    v1/task/table/request
+    - POST: admin, member
 
     v1/task
-    - GET : admin
-    - DELETE: admin
+    - GET : admin, member
+    - DELETE: admin, member
 
     v1/task/all
-    - GET : admin
+    - GET : admin, member
 
 
 kind: ConfigMap
