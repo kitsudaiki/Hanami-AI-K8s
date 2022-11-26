@@ -64,10 +64,8 @@ spec:
           subPath: endpoints
         - name: sakura-files-volume
           mountPath: /etc/shiori/sakura-files
-        - name: cluster-snapshots-volume
-          mountPath: /etc/shiori/cluster_snapshots
-        - name: train-data-volume
-          mountPath: /etc/shiori/train_data
+        - name: files-volume
+          mountPath: /etc/shiori/files
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
       - name: kyouko
@@ -146,9 +144,7 @@ spec:
             name: token-key
         - name: sakura-files-volume
           emptyDir: {}
-        - name: cluster-snapshots-volume
-          emptyDir: {}
-        - name: train-data-volume
+        - name: files-volume
           emptyDir: {}
         - name: hanami-sockets-volume
           emptyDir: {}
