@@ -70,13 +70,18 @@ data:
     v1/cluster_snapshot/all
     - GET: admin, member
 
-
     v1/request_result
     - GET: admin, member
     - DELETE: admin, member
 
     v1/request_result/all
     - GET: admin, member
+
+    v1/audit_log
+    - GET: admin, member
+
+    v1/error_log
+    - GET: admin
 
 
     [azuki]
@@ -154,6 +159,5 @@ data:
 
     v1/task/all
     - GET : admin, member
-
 
 kind: ConfigMap
