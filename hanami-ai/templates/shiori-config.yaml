@@ -12,11 +12,8 @@ data:
     database = "/etc/shiori/shiori_db"
 
     [shiori]
-    data_set_location = "/etc/shiori/train_data"
-    result_location = "/etc/shiori/results"
-    error_location = "/etc/shiori/errors"
-    audit_location = "/etc/shiori/audit"
-    cluster_snapshot_location = "/etc/shiori/cluster_snapshots"
+    data_set_location = "/etc/shiori/files"
+    cluster_snapshot_location = "/etc/shiori/files"
 
     [misaki]
     address = "/tmp/hanami/misaki.uds"
