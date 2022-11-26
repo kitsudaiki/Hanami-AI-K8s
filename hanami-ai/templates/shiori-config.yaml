@@ -13,9 +13,6 @@ data:
 
     [shiori]
     data_set_location = "/etc/shiori/train_data"
-    result_location = "/etc/shiori/results"
-    error_location = "/etc/shiori/errors"
-    audit_location = "/etc/shiori/audit"
     cluster_snapshot_location = "/etc/shiori/cluster_snapshots"
 
     [misaki]
