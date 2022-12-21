@@ -7,7 +7,6 @@ data:
     #debug = True
     log_path = "/var/log/torii"
     address = "/tmp/hanami/torii.uds"
-    endpoints = "/etc/torii/endpoints"
 
     [sakura]
     enable = True

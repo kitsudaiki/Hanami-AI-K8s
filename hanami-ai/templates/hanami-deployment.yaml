@@ -39,17 +39,12 @@ spec:
         - name: misaki-config
           mountPath: /etc/misaki/misaki.conf
           subPath: misaki.conf
-        - name: endpoints-config
-          mountPath: /etc/misaki/endpoints
-          subPath: endpoints
         - name: policies-config
           mountPath: /etc/misaki/policies
           subPath: policies
         - name: token-key
           mountPath: /etc/misaki/token_key
           subPath: token_key
-        - name: sakura-files-volume
-          mountPath: /etc/misaki/sakura-files
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
       - name: shiori
@@ -59,11 +54,6 @@ spec:
         - name: shiori-config
           mountPath: /etc/shiori/shiori.conf
           subPath: shiori.conf
-        - name: endpoints-config
-          mountPath: /etc/shiori/endpoints
-          subPath: endpoints
-        - name: sakura-files-volume
-          mountPath: /etc/shiori/sakura-files
         - name: files-volume
           mountPath: /etc/shiori/files
         - name: hanami-sockets-volume
@@ -75,11 +65,6 @@ spec:
         - name: kyouko-config
           mountPath: /etc/kyouko/kyouko.conf
           subPath: kyouko.conf
-        - name: endpoints-config
-          mountPath: /etc/kyouko/endpoints
-          subPath: endpoints
-        - name: sakura-files-volume
-          mountPath: /etc/kyouko/sakura-files
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
       - name: azuki
@@ -91,11 +76,6 @@ spec:
         - name: azuki-config
           mountPath: /etc/azuki/azuki.conf
           subPath: azuki.conf
-        - name: endpoints-config
-          mountPath: /etc/azuki/endpoints
-          subPath: endpoints
-        - name: sakura-files-volume
-          mountPath: /etc/azuki/sakura-files
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
       - name: torii
@@ -105,11 +85,6 @@ spec:
         - name: torii-config
           mountPath: /etc/torii/torii.conf
           subPath: torii.conf
-        - name: endpoints-config
-          mountPath: /etc/torii/endpoints
-          subPath: endpoints
-        - name: sakura-files-volume
-          mountPath: /etc/torii/sakura-files
         - name: hanami-sockets-volume
           mountPath: /tmp/hanami
         - name: dashboard-volume
@@ -133,17 +108,12 @@ spec:
         - name: torii-config
           configMap:
             name: torii-config
-        - name: endpoints-config
-          configMap:
-            name: endpoints-config
         - name: policies-config
           configMap:
             name: policies-config
         - name: token-key
           configMap:
             name: token-key
-        - name: sakura-files-volume
-          emptyDir: {}
         - name: files-volume
           emptyDir: {}
         - name: hanami-sockets-volume

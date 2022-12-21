@@ -6,9 +6,7 @@ data:
     [DEFAULT]
     #debug = True
     log_path = "/var/log/misaki"
-    sakura-file-locaion = "/etc/misaki/sakura-files"
     address = "/tmp/hanami/misaki.uds"
-    endpoints = "/etc/misaki/endpoints"
     database = "/etc/misaki/misaki_db"
 
     [misaki]

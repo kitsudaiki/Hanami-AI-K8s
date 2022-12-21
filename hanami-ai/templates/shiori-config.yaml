@@ -6,9 +6,7 @@ data:
     [DEFAULT]
     #debug = True
     log_path = "/var/log/shiori"
-    sakura-file-locaion = "/etc/shiori/sakura-files"
     address = "/tmp/hanami/shiori.uds"
-    endpoints = "/etc/shiori/endpoints"
     database = "/etc/shiori/shiori_db"
 
     [shiori]

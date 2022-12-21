@@ -8,7 +8,6 @@ data:
     log_path = "/var/log/azuki"
     sakura-file-locaion = "/etc/azuki/sakura-files"
     address = "/tmp/hanami/azuki.uds"
-    endpoints = "/etc/azuki/endpoints"
     database = "/etc/azuki/azuki_db"
 
     [torii]

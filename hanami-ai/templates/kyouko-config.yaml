@@ -6,9 +6,7 @@ data:
     [DEFAULT]
     #debug = true
     log_path = "/var/log/kyouko"
-    sakura-file-locaion = "/etc/kyouko/sakura-files"
     address = "/tmp/hanami/kyouko.uds"
-    endpoints = "/etc/kyouko/endpoints"
     database = "/etc/kyouko/kyouko_db"
 
     [misaki]
